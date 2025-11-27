@@ -1,0 +1,104 @@
+<!-- Abrar Maheer Bin Arif UCID 30218259 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vanilla JS Customizable Quiz</title>
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="panel">
+      <h1>Vanilla JS Customizable Quiz</h1>
+    </header>
+
+    <!-- Quiz Setup Controls -->
+    <section class="panel controls" id="controls">
+      <!-- Inputs for name, number of questions, and category -->
+      <div>
+        <label for="username">Your name</label>
+        <input id="username" type="text" placeholder="e.g. Abrar" />
+      </div>
+      <div>
+        <label for="amount">Number of questions</label>
+        <select id="amount">
+          <option value="6">6</option>
+          <option value="9" selected>9</option>
+          <option value="12">12</option>
+        </select>
+      </div>
+      <div>
+        <label for="category">Category (optional)</label>
+        <select id="category">
+          <option value="">Any</option>
+          <option value="9">General Knowledge</option>
+          <option value="18">Computer Science</option>
+          <option value="17">Science & Nature</option>
+          <option value="23">History</option>
+          <option value="21">Sports</option>
+        </select>
+      </div>
+      <div class="row">
+        <button id="startBtn" class="secondary">Start Quiz</button>
+        <button id="resetBtn" class="ghost">Reset</button>
+      </div>
+    </section>
+
+    <!-- Main Quiz Panel -->
+    <section class="panel quiz" id="quiz" hidden>
+      <!-- Question metadata and progress -->
+      <div class="q-meta">
+        <div>
+          <span id="qIndex">Q 1</span>
+          <span class="muted">·</span>
+          <span id="qDifficulty">difficulty: —</span>
+          <span class="muted">·</span>
+          <span id="qCategory">category: —</span>
+        </div>
+        <div class="scoreline">
+          <span class="scorepill" id="scoreNow">Score: 0</span>
+          <span class="scorepill" id="streak">Streak: 0 🔥</span>
+          <span class="scorepill" id="progressPill">0%</span>
+        </div>
+      </div>
+      <div class="progress"><i id="progress"></i></div>
+
+      <h2 id="qText">Question goes here…</h2>
+      <div id="choices" class="choices" role="radiogroup" aria-labelledby="qText"></div>
+
+      <div style="display:flex; gap: 10px; flex-wrap: wrap;">
+        <button id="submitBtn">Submit Answer</button>
+        <button id="nextBtn" class="secondary" disabled>Next Question</button>
+        <button id="showAnsBtn" class="ghost">Reveal Answer</button>
+      </div>
+
+      <div id="message" class="msg"></div>
+
+      <div>
+        <h3 style="margin:0 0 6px 0;">History</h3>
+        <div id="history" class="muted" style="display:flex; gap:6px; flex-wrap: wrap;"></div>
+      </div>
+    </section>
+    
+    <!-- Summary Section -->
+    <section id="summary" class="panel" hidden>
+      <!-- Final score and replay/export options -->
+      <h2>Summary</h2>
+      <p id="sumText"></p>
+      <div class="row">
+        <button id="playAgain" class="secondary">Play Again</button>
+        <button id="exportHistory" class="ghost">Export Score History (JSON)</button>
+      </div>
+    </section>
+
+    <footer>
+      SENG 513 A2: Vanilla JavaScript Customizable Quiz
+    </footer>
+  </div>
+
+  <!-- Main JS logic -->
+  <script src="app.js" defer></script>
+</body>
+</html>
